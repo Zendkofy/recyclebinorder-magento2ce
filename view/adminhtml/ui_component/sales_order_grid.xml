@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Zendkofy
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Zendkofy
+ * @package     Zendkofy_RecycleBinOrder
+ * @copyright   Copyright © 2016 Zendkofy. All rights reserved.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <container name="listing_top">
+        <massaction name="listing_massaction">
+            <action name="moveToTrash">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">moveToTrash</item>
+                        <item name="label" xsi:type="string" translate="true">Move To Trash</item>
+                        <item name="url" xsi:type="url" path="recyclebinadmin/order/massMoveToTrash"/>
+                    </item>
+                </argument>
+            </action>
+            <action name="deleteOrder">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete_order</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="recyclebinadmin/order/massDelete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete orders</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected orders? The orders will be really deleted and you cannot restore them!</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </container>
+</listing>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Zendkofy
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Zendkofy
+ * @package     Zendkofy_RecycleBinOrder
+ * @copyright   Copyright © 2016 Zendkofy. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Zendkofy_RecycleBinOrder::sales_trash"
+             title="Recycle Bin"
+             module="Zendkofy_RecycleBinOrder"
+             sortOrder="10"
+             parent="Magento_Sales::sales"
+             resource="Zendkofy_RecycleBinOrder::sales_trash"/>
+        <add id="Zendkofy_RecycleBinOrder::order"
+             title="Orders"
+             resource="Zendkofy_RecycleBinOrder::order"
+             module="Zendkofy_RecycleBinOrder"
+             sortOrder="20"
+             parent="Zendkofy_RecycleBinOrder::sales_trash"
+             action="recyclebinadmin/trash"/>
+    </menu>
+</config>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Zendkofy
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Zendkofy
+ * @package     Zendkofy_RecycleBinOrder
+ * @copyright   Copyright © 2016 Zendkofy. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Zendkofy\RecycleBinOrder\Api\OrderTrashManagementInterface" type="Zendkofy\RecycleBinOrder\Model\OrderTrashManagement"/>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="sales_order_trash_grid_data_source" xsi:type="string">Zendkofy\RecycleBinOrder\Model\ResourceModel\OrderTrash\Order\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Zendkofy\RecycleBinOrder\Model\ResourceModel\OrderTrash\Order\Grid\Collection">
+        <arguments>
+            <argument name="eventPrefix" xsi:type="string">ordertrash_trash_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">trash_grid_collection</argument>
+            <argument name="mainTable" xsi:type="string">sales_order_grid</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Sales\Model\ResourceModel\Order</argument>
+        </arguments>
+    </type>
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid\Collection" type="Zendkofy\RecycleBinOrder\UiComponent\DataProvider\Order\SearchResult">
+        <arguments>
+            <argument name="eventPrefix" xsi:type="string">sales_order_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">order_grid_collection</argument>
+            <argument name="mainTable" xsi:type="string">sales_order_grid</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Sales\Model\ResourceModel\Order</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Invoice\Grid\Collection" type="Zendkofy\RecycleBinOrder\UiComponent\DataProvider\Order\Invoice\SearchResult">
+        <arguments>
+            <argument name="eventPrefix" xsi:type="string">sales_invoice_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">invoice_grid_collection</argument>
+            <argument name="mainTable" xsi:type="string">sales_invoice_grid</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Sales\Model\ResourceModel\Order\Invoice</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Shipment\Grid\Collection" type="Zendkofy\RecycleBinOrder\UiComponent\DataProvider\Order\Shipment\SearchResult">
+        <arguments>
+            <argument name="eventPrefix" xsi:type="string">sales_shipment_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">shipment_grid_collection</argument>
+            <argument name="mainTable" xsi:type="string">sales_shipment_grid</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Sales\Model\ResourceModel\Order\Shipment</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Creditmemo\Grid\Collection" type="Zendkofy\RecycleBinOrder\UiComponent\DataProvider\Order\Creditmemo\SearchResult">
+        <arguments>
+            <argument name="eventPrefix" xsi:type="string">sales_creditmemo_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">creditmemo_grid_collection</argument>
+            <argument name="mainTable" xsi:type="string">sales_creditmemo_grid</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Sales\Model\ResourceModel\Order\Creditmemo</argument>
+        </arguments>
+    </virtualType>
+</config>
